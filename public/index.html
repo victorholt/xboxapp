@@ -1,0 +1,33 @@
+<!doctype>
+<html lang="en">
+  <head>
+    <title>XBox Game Voting</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  </head>
+
+  <body>
+    <div id="ajax-loader"></div>
+    <div id="app"></div>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/2.3.0/es5-shim.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1-rc2/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/react/0.10.0/react.min.js"></script>
+    <!--script type="text/javascript" src="http://fb.me/react-0.10.0.js"></script-->
+
+    <!--// Debugging purposes we'll not use the minified version. Would also help to get the ReactJS Chrome Extension! -->
+    <script type="text/javascript" src="/js/xbox-app.min.js"></script>
+    <script type="text/javascript">
+      React.renderComponent(new GameApplication(), $('#app')[0]);
+
+      // Handle the routes using backbone.
+      (function() {
+        app.router = new app.AppRouter();
+      })();
+    </script>
+  </body>
+</html>

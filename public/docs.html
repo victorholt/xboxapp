@@ -1,0 +1,101 @@
+<!doctype>
+<html>
+	<head>
+		<title>XBox Game Voting Documentation</title>
+		<style>
+			body {
+				color: #333333;
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 1em;
+				padding: 20px;
+			}
+			.min-height {
+				height: 150px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="markdown">
+# XBox Game Voting Documentation
+
+###Install
+To get this to work locally please ensure you have NodeJS installed on your machine.
+
+Go to the **/src/** folder and run
+
+```javascript
+npm install
+```
+This will ensure that you have all of the web server requirements. After this command you may run
+
+```javascript
+node server/server.js
+```
+To get the webserver running. The site by default should run at the location: [http://localhost:8080](http://localhost:8080).
+You may change the port # by going the the **server/config.json** file and updating the port.
+
+###The code
+The code base is broken up in the following way:
+
+1. **/public**
+  - The frontend code is compiled into the folders **/js** and **/css** for the javascript files and the css files.
+2. **/src**
+  - All of the source code include the **Gruntfile.js** file is included here.
+
+###Source Code File Structure
+The code file structure is done in the following manner:
+
+```javascript
+/src
+	/server - All of the server-related files
+	/site 	- All site-related files
+		/components - ReactJS 'view' components
+		/core 		- Core files that 'core' functionality outside of the views (ReactJS)
+		/sass 		- Sass files
+```
+
+###Application Object
+This application is built using both Backbone *(for the routing)* and ReactJS *(for the views)*. The application
+also has a few objects that it relies on throughout the code.
+
+```javascript
+// The base application object to contain global variables
+var app
+
+// The properties of the application (essentially global application data variables).
+app.props
+
+// The utility functions.
+app.utils
+
+// The cache that gets saved to localStorage
+app.cache
+
+// Common variables and front-end functionality.
+app.common
+```
+
+###Grunt tasks
+You may run grunt by the following command
+
+```javascript
+grunt build-watch
+```
+
+###Example
+An example of the application can be found at the following links:
+
+[http://xbox.foundopen.com/](http://xbox.foundopen.com/)
+
+		</div>
+
+		<div class="min-height"></div>
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1-rc2/jquery.min.js"></script>
+		<script type="text/javascript">
+			var converter = new Showdown.converter();
+			$('#markdown').html(converter.makeHtml($('#markdown').html()));
+		</script>
+	</body>
+</html>

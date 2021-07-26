@@ -1,0 +1,21 @@
+// The base file for css styles.
+
+// Font base styles.
+$fontColor: #EFEFEF;
+$fontAnchorColor: #FF0054;
+$fontAnchorHoverColor: #AD0039;
+$fontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$fontSize: 1em;
+
+// Colors.
+$whiteColor: #FFFFFF;
+$lightGrey: #BABABA;
+$darkGrey: #5F5E5E;
+
+// Import our other styles.
+@import "mixins";
+@import "grid";
+@import "general";
+@import "navigation";
+@import "form";
+@import "iconfont";

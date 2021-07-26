@@ -1,0 +1,247 @@
+// General styles.
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  color: $fontColor;
+  font-family: $fontFamily;
+  font-size: $fontSize;
+}
+
+// Helper styles.
+.hidden {
+  display: none;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.clear {
+  clear: both;
+}
+.min-height {
+  clear: both;
+  padding: 50px 0;
+}
+
+a {
+  color: $fontAnchorColor;
+  @include ease-out();
+}
+a:hover {
+  color: $fontAnchorHoverColor;
+}
+
+ul {
+  list-style: none;
+}
+
+// Canvas styles for the ajax loader.
+.ajax-loader-container canvas {
+  background-color: #000000;
+  display: block;
+  left: 50%;
+  margin: -35px 0 0 -35px;
+  position: fixed;
+  top: 50%;
+  z-index: 5002;
+
+  @include round-corners(3px);
+  @include opacity(.65, 65);
+}
+
+// Background slider styles.
+#background-slider, #background-slider-next, #background-slider-overlay {
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index: 0;
+
+  @include background-cover();
+}
+#background-slider-next {
+  display: none;
+}
+#background-slider-overlay {
+  background-color: $whiteColor;
+
+  @include opacity();
+}
+
+// Dialog box styles.
+// -------
+#dlg-box {
+  color: $darkGrey;
+  display: none;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+}
+#dlg-box #dlg-box-container {
+  height: 100%;
+  width: 100%;
+}
+#dlg-box .dlg-box-bg {
+  background-color: $whiteColor;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  @include opacity( 0.7, 70 );
+}
+#dlg-box #dlg-box-content-container {
+  background-color: $whiteColor;
+  border: 1px solid $lightGrey;
+  left: 0;
+  max-width: 70%;
+  padding: 0 20px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  z-index: 5001;
+
+  @include box-shadow(0, 0, $lightGrey, 4px, 2px);
+  @include opacity(0.01, 1);
+}
+#dlg-box #dlg-box-content-container .dlg-box-close {
+  color: $lightGrey;
+  height: 18px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+#dlg-box #dlg-box-content-container .dlg-box-close span {
+  cursor: pointer;
+}
+#dlg-box #dlg-box-content-container .dlg-box-close span:hover {
+  background-color: $fontAnchorColor;
+  color: $whiteColor;
+
+  @include ease-out();
+}
+#dlg-box #dlg-box-content-container button.dlg-box-close-btn {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+#dlg-box #dlg-box-content-container .dlg-box-header {
+  clear: both;
+  text-align: left;
+}
+
+#dlg-box #dlg-box-content-container .dlg-box-content {
+  text-align: left;
+}
+#dlg-box #dlg-box-content-container .dlg-box-content .form-container {
+  width: 100%;
+}
+#dlg-box #dlg-box-content-container .dlg-box-footer {
+  clear: both;
+}
+
+// Our game container styles.
+.game-container {
+  margin: 0 auto;
+  position: relative;
+  top: 75px;
+}
+
+.game-container-bg {
+  background-color: #000000;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+
+  @include opacity();
+  @include round-corners(6px);
+}
+
+.game-content h2 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.game-form, .game-content {
+  padding: 15px;
+  position: relative;
+  z-index: 100;
+}
+.game-form.right {
+  width: 40%;
+  text-align: right;
+}
+
+@include mq-mobile {
+  .game-form.right {
+    width: 90%;
+    text-align: left;
+  }
+}
+
+/* Set width for container in tablets */
+@include mq-tablet {
+  .game-form.right {
+    width: 90%;
+    text-align: left;
+  }
+}
+
+.game-content h2 {
+  position: relative;
+  top: -15px;
+}
+
+.game-content ul {
+  margin: 0;
+  padding: 0;
+}
+
+.game-content li {
+  border-bottom: 1px dotted $fontAnchorColor;
+  cursor: pointer;
+  line-height: 2em;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.game-content li .hover-overlay {
+  background-color: transparent;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+
+  @include opacity(0.15, 15);
+}
+
+.game-content li:hover .hover-overlay {
+  background-color: #FFFFFF;
+}
+
+.game-content li .votes {
+  background-color: $fontAnchorColor;
+  color: $whiteColor;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 15px;
+  padding: 0.1em 0.5em;
+  position: relative;
+  top: 3px;
+}
+
+.game-content button {
+  padding: 0.5em 1em;
+  position: relative;
+  top: 5px;
+}

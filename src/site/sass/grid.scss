@@ -1,0 +1,225 @@
+/*  Grid Variables */
+$grid_columns:                      12 !default;
+$grid_column_width:                 60px !default;
+$grid_gutter_width:                 20px !default;
+$grid_row_width:                    $grid_columns * $grid_column_width + $grid_gutter_width * ($grid_columns - 1);
+
+/* 1200px plus grid */
+$grid_large_column_width:           62px !default;
+$grid_large_gutter_width:           40px !default;
+$grid_large_row_width:              $grid_columns * $grid_large_column_width + $grid_large_gutter_width * ($grid_columns - 1);
+
+/* Calculate Fluid widths based off of pixels */
+$fluid_grid_column_width: percentage($grid_column_width / $grid_row_width) !default;
+$fluid_grid_gutter_width: percentage($grid_gutter_width / $grid_row_width) !default;
+
+$fluid_grid_large_column_width: percentage($grid_large_column_width / $grid_large_row_width) !default;
+$fluid_grid_large_gutter_width: percentage($grid_large_gutter_width / $grid_large_row_width) !default;
+
+/*  Media Qs */
+@mixin mq-mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+@mixin mq-tablet {
+  @media (min-width: 768px) and (max-width: 979px) {
+    @content;
+  }
+}
+@mixin mq-tablet-max {
+  @media (max-width: 979px) {
+    @content;
+  }
+}
+@mixin mq-wide {
+  @media (min-width: 1210px) {
+    @content;
+  }
+}
+
+/* Main create grid function */
+@mixin grid($fluid_grid_column_width, $fluid_grid_gutter_width) {
+  .row {
+    @include clearfix;
+
+    [class*="span"] {
+      float: left;
+      margin-left: $fluid_grid_gutter_width;
+    }
+    [class*="span"]:first-child {
+      margin-left: 0;
+    }
+    [class*="span"]:last-child {
+      float: right;
+    }
+    @for $i from 1 through $grid_columns {
+      .span#{$i} {
+        @include gridFluidSpan($i, $fluid_grid_column_width, $fluid_grid_gutter_width);
+      }
+      .offset#{$i} {
+        @include gridCoreOffset($i, $fluid_grid_column_width, $fluid_grid_gutter_width);
+      }
+    }
+  }
+}
+
+@mixin gridFluidSpan($columns, $fluid_grid_column_width : $fluid_grid_column_width , $fluid_grid_gutter_width : $fluid_grid_gutter_width) {
+  $columnWidth : $fluid_grid_column_width * $columns + $fluid_grid_gutter_width * ($columns - 1);
+  width: $columnWidth;
+  &:after {
+    display: block;
+  }
+}
+
+@mixin gridCoreOffset($columns, $fluid_grid_column_width, $fluid_grid_gutter_width) {
+  padding-left: $fluid_grid_column_width * $columns + $fluid_grid_gutter_width * ($columns - 1) + $fluid_grid_gutter_width;
+}
+
+@mixin clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin mq-visible-device( $desktop, $tablet, $phone ) {
+  @if $desktop == 1 {
+    .visible-desktop {
+      display: block;
+    }
+  } @else {
+    .visible-desktop {
+      display: none;
+    }
+  }
+
+  @if $tablet == 1 {
+    .visible-tablet {
+      display: block;
+    }
+  } @else {
+    .visible-tablet {
+      display: none;
+    }
+  }
+
+  @if $phone == 1 {
+    .visible-phone {
+      display: block;
+    }
+  } @else {
+    .visible-phone {
+      display: none;
+    }
+  }
+}
+
+@mixin mq-hidden-device( $desktop, $tablet, $phone ) {
+  @if $desktop == 1 {
+    .hidden-desktop {
+      display: none;
+    }
+  } @else {
+    .hidden-desktop {
+      display: block;
+    }
+  }
+
+  @if $tablet == 1 {
+    .hidden-tablet {
+      display: none;
+    }
+  } @else {
+    .hidden-tablet {
+      display: block;
+    }
+  }
+
+  @if $phone == 1 {
+    .hidden-phone {
+      display: none;
+    }
+  } @else {
+    .hidden-phone {
+      display: block;
+    }
+  }
+}
+
+/* Desktop Container */
+//*
+//  +box-sizing(border-box)
+
+.container {
+  width: $grid_row_width;
+  margin-left: auto;
+  margin-right: auto;
+  @include clearfix;
+}
+
+/* Fluid 100% Container */
+.container-fluid {
+  //padding-left: $grid_gutter_width
+  //padding-right: $grid_gutter_width
+  @include clearfix;
+}
+
+/* Create base grid (940px) */
+@include grid($fluid_grid_column_width, $fluid_grid_gutter_width);
+
+/** Class-targetted queries **/
+@include mq-visible-device( 1, 0, 0 );
+@include mq-hidden-device( 1, 0, 0 );
+
+/* Create mobile grids*/
+@include mq-mobile {
+  .container {
+    font-size: 85%;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: auto;
+  }
+  .row > [class*="span"] {
+    float: none !important;
+    display: block;
+    width: auto;
+    margin: 0;
+    padding-left: 0;
+  }
+  a.button {
+    padding: 3% 5% 3% 5%;
+  }
+
+  @include mq-visible-device( 0, 0, 1 );
+  @include mq-hidden-device( 0, 0, 1 );
+}
+
+/* Set width for container in tablets */
+@include mq-tablet {
+  .container {
+    font-size: 90%;
+    width: 740px;
+  }
+  a.button {
+    padding: 2% 5% 2% 5%;
+  }
+
+  @include mq-visible-device( 0, 1, 0 );
+  @include mq-hidden-device( 0, 1, 0 );
+}
+
+/* Create 1280 monitor plus grids */
+@include mq-wide {
+  .container {
+    font-size: 100%;
+    width: $grid_large_row_width;
+  }
+  @include grid($fluid_grid_large_column_width, $fluid_grid_large_gutter_width);
+}
+
+

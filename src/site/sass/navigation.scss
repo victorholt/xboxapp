@@ -1,0 +1,106 @@
+// The navigation styles.
+
+div#navigation {
+  background-color: #FFFFFF;
+  height: 50px;
+  position: fixed;
+  width: 100%;
+  z-index: 200;
+
+  @include opacity(0.85, 85);
+}
+
+div#navigation ul {
+  list-style: none;
+}
+
+div#navigation li {
+  display: inline-block;
+  line-height: 1em;
+}
+div#navigation li a {
+  color: $fontAnchorColor;
+  display: inline-block;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+div#navigation .nav-title {
+  color: #333333;
+  font-size: 1.5em;
+}
+
+ul#menubars {
+  cursor: pointer;
+  position: relative;
+  right: 10px;
+  top: -3px;
+}
+
+div.menubars {
+  cursor: pointer;
+  height: 50px;
+  position: absolute;
+  right: 10px;
+  width: 50px;
+}
+span.navbar1, span.navbar2, span.navbar3 {
+  border: 3px solid $fontAnchorColor;
+  display: block;
+  position: relative;
+  width: 30px;
+}
+span.navbar2 {
+  top: 3px;
+}
+span.navbar3 {
+  top: 6px;
+}
+
+/* Create mobile grids*/
+@include mq-mobile {
+  ul#navlinks {
+    background-color: #FFFFFF;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 34px;
+  }
+
+  ul#navlinks li, ul#navlinks li a {
+    display: block;
+  }
+
+  ul#navlinks li a {
+    line-height: 2em;
+  }
+
+  div#navigation .nav-title {
+  color: #333333;
+    font-size: 1em;
+  }
+}
+
+/* Set width for container in tablets */
+@include mq-tablet {
+  ul#navlinks {
+    background-color: #FFFFFF;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 34px;
+  }
+
+  ul#navlinks li, ul#navlinks li a {
+    display: block;
+  }
+
+  ul#navlinks li a {
+    line-height: 2em;
+  }
+
+  div#navigation .nav-title {
+    color: #333333;
+    font-size: 1em;
+  }
+}

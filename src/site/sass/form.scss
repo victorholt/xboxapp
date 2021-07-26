@@ -1,0 +1,27 @@
+// Our form styles.
+
+input {
+  border: 1px solid #FFFFFF;
+  font-size: 0.8em;
+  height: 3.3em;
+  outline: none;
+  position: relative;
+  text-indent: 10px;
+  top: 1px;
+  width: 50%;
+}
+
+button {
+  background-color: $fontAnchorColor;
+  border: none;
+  color: $fontColor;
+  font-size: 0.8em;
+  outline: none;
+  padding: 1em;
+  cursor: pointer;
+
+  @include ease-out();
+}
+button:hover {
+  background-color: $fontAnchorHoverColor;
+}

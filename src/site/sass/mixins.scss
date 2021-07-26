@@ -1,0 +1,71 @@
+// Mixins for our styles.
+
+// Easing transition
+@mixin ease-out( $speed: 0.3s ) {
+  -webkit-transition: all $speed ease-out;
+  -moz-transition: all $speed ease-out;
+  -o-transition: all $speed ease-out;
+  transition: all $speed ease-out;
+}
+
+// Box shadow property.
+@mixin box-shadow($horizontal: 0, $vertical: 0, $color: $darkGrey, $blur: 4px, $spread: 2px) {
+  -moz-box-shadow:    $horizontal $vertical $blur $spread $color;
+  -webkit-box-shadow: $horizontal $vertical $blur $spread $color;
+  box-shadow:         $horizontal $vertical $blur $spread $color;
+}
+
+// Round all corners by amount.
+@mixin round-corners($amount: $default_rounded_amount) {
+  border-radius: $amount;
+  -moz-border-radius: $amount;
+  -webkit-border-radius: $amount;
+}
+
+// Round left corners by amount.
+@mixin round-left-corners($amount: $default_rounded_amount) {
+  @include round-corner("top-left", $amount);
+  @include round-corner("bottom-left", $amount);
+  @include round-corner-mozilla("topleft", $amount);
+  @include round-corner-mozilla("bottomleft", $amount);
+}
+
+// Round right corners by amount.
+@mixin round-right-corners($amount: $default_rounded_amount) {
+  @include round-corner("top-right", $amount);
+  @include round-corner("bottom-right", $amount);
+  @include round-corner-mozilla("topright", $amount);
+  @include round-corner-mozilla("bottomright", $amount);
+}
+
+// Round top corners by amount.
+@mixin round-top-corners($amount: 5px) {
+  @include round-corner("top-left", $amount);
+  @include round-corner("top-right", $amount);
+  @include round-corner-mozilla("topleft", $amount);
+  @include round-corner-mozilla("topright", $amount);
+}
+
+// Round bottom corners by amount.
+@mixin round-bottom-corners($amount: $default_rounded_amount) {
+  @include round-corner("bottom-left", $amount);
+  @include round-corner("bottom-right", $amount);
+  @include round-corner-mozilla("bottomleft", $amount);
+  @include round-corner-mozilla("bottomright", $amount);
+}
+
+// Set the background to be a cover.
+@mixin background-cover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@mixin opacity( $filterAmount: 0.5, $ieAmount: 50 ) {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$ieAmount)";
+  filter: alpha(opacity=$ieAmount);
+  -moz-opacity: $filterAmount;
+  -khtml-opacity: $filterAmount;
+  opacity: $filterAmount;
+}
