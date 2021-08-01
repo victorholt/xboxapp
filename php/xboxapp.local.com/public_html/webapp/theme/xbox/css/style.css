@@ -1,0 +1,532 @@
+/**
+ * The stylesheet.
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Doppio+One);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,400italic);
+/*@import url(http://fonts.googleapis.com/css?family=Metrophobic);*/
+
+@font-face {
+	font-family: 'sosa';
+	src: url('fonts/sosa/sosa.eot'); /* IE9 Compat Modes */
+	src: url('fonts/sosa/sosa.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	     url('fonts/sosa/sosa.woff') format('woff'), /* Modern Browsers */
+	     url('fonts/sosa/sosa.ttf')  format('truetype'), /* Safari, Android, iOS */
+	     url('fonts/sosa/sosa.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+/**---------------------------------------------------------------------- *
+ * Global Styles.
+ *----------------------------------------------------------------------- */
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+body {
+	background-color: #FFF;
+
+	background-color: #333\9; /* IE 9,8 and below */
+	*background: #333; /* IE 7 and below */
+	_background: #333; /* IE 6 */
+
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	font-size: 18px;
+	/*text-shadow: 0 1px white;*/
+	color: #8E8E8C;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+
+	/** CSS3 Goodness with the gradient to give a more xboxish feel. **/
+	/** Thanks to http://gradients.glrzad.com/ for the generation. **/
+	background-repeat: repeat-x;
+	background-image: linear-gradient(500, #FFFFFF 35%, #FFFFFF 68%, #333333 100%);
+	background-image: -o-linear-gradient(500, #FFFFFF 35%, #FFFFFF 68%, #333333 100%);
+	background-image: -moz-linear-gradient(500, #FFFFFF 35%, #FFFFFF 68%, #333333 100%);
+	background-image: -webkit-linear-gradient(500, #FFFFFF 35%, #FFFFFF 68%, #333333 100%);
+	background-image: -ms-linear-gradient(500, #FFFFFF 35%, #FFFFFF 68%, #333333 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left 1500,
+		left top,
+		color-stop(0.35, #FFFFFF),
+		color-stop(0.68, #FFFFFF),
+		color-stop(1, #333333)
+	);
+}
+
+/**---------------------------------------------------------------------- *
+ * General List Styles.
+ *----------------------------------------------------------------------- */ 
+a {
+	color: #BDBEC1;
+	text-decoration: none;
+}
+ul {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+
+h1, h2, h3, h4, h1 a {
+	font-family: 'Doppio One', sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	margin: 0;
+	padding: 0;
+	color: #7B4;
+}
+h1 { font-size: 32px; }
+h3 { font-size: 22px; padding-bottom: 10px; }
+h4 { border-bottom: 1px solid #DEDEDE; }
+h1.heading { 
+	border-bottom: 1px dotted #ADADAD;
+	margin-bottom: 8px;
+}
+
+img { border: none; }
+
+.icon16, .icon18, .icon24, .icon32 {
+	font-family: 'sosa';
+	font-weight: normal;
+	position: relative;
+	top: -1px;
+
+	/* On mac the icons don't look quite right, so I do this to fix it... */
+
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=90);
+  -moz-opacity: 0.9;
+  -khtml-opacity: 0.9;
+  opacity: 0.9;
+}
+.icon16 { font-size: 16px; }
+.icon18 { font-size: 18px; }
+.icon24 { font-size: 24px; }
+.icon32 { font-size: 32px; }
+
+/**---------------------------------------------------------------------- *
+ * Helpers Styles.
+ *----------------------------------------------------------------------- */
+.cls { clear: both; }
+.right { float: right; }
+.left { float: left; }
+.hidden { display: none; }
+.highlight { color: #7B4; border-bottom: 1px dotted #888; }
+.note { font-size: 11px; font-style: italic; }
+.center { margin-left: auto; margin-right: auto; text-align: center; }
+.inner { padding: 0 20px 0 20px; text-align: left; }
+.inner5 { padding: 5px; }
+
+.highlight.grey { color: #8E8E8C; }
+.highlight.blue { color: #1CB8E8; }
+.highlight.green { color: #6AAC22; }
+.highlight.red { color: #d54e21; }
+.highlight { color: #7B4; border-bottom: 1px dotted #888; }
+
+/**---------------------------------------------------------------------- *
+ * Page Content Styles.
+ *----------------------------------------------------------------------- */
+.header {
+	background-color: #222;
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;	
+}
+.header h1 {
+	text-shadow: 0 1px #355418;
+	margin-top: 8px;
+}
+.header-content {
+	position: relative;
+	top: 6px;
+	padding: 5px;
+}
+
+/** The User Menu **/
+.usermenu {
+	margin-top: 12px;
+	margin-bottom: 20px;
+	float: right;
+}
+/** End User Menu **/
+
+.footer {
+	padding: 20px 0 20px 0;
+	font-size: 12px;
+}
+
+::selection {
+	background: #7B4;
+	color: #FFF;
+}
+
+/** Page Message Styles **/
+#pagemessage {
+	display: none;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+	margin: 5px;			
+	text-align: center;
+	text-shadow: 0 1px white;
+}
+#pagemessage.error {
+	background-color: #F2DEDE;
+	color: #B94A48;
+}
+#pagemessage.success {
+	background-color: #DFF0D8;
+	color: #468847;
+}
+/** End Page Message Styles **/
+
+/**---------------------------------------------------------------------- *
+ * User Menu List Styles.
+ *----------------------------------------------------------------------- */
+#navmenu {		
+	background-color: #2BA9CC;
+	font-family: 'Doppio One';
+	width: 100%;
+}
+#navmenu li {
+	float: left;
+}
+#navmenu li.clearaction {
+	float: right;
+}
+#navmenu li a {
+	padding: 8px;
+	display: block;
+	color: #FFF;
+	text-shadow: none;
+}
+#navmenu li.clearaction a:hover { color: #7B4; }
+
+#navmenu li:hover, #navmenu li a:hover {
+	background-color: #21819C;
+}
+
+/**---------------------------------------------------------------------- *
+ * Game List Styles.
+ *----------------------------------------------------------------------- */ 
+#gamelist li {
+	font-size: 20px;
+	color: #FFF;	
+	margin-bottom: 3px;	
+	position: relative;
+}
+.gameinfo {	
+	width: 100%;
+	height: 55px;
+	display: table;
+}
+/*.gameinfo:hover {
+	cursor: pointer;
+
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;  
+}*/
+.gamestats {
+	background-color: #7B4;
+	font-size: 28px;
+	font-weight: 600;
+	float: left;
+	width: 55px;
+	height: 55px;
+	line-height: 2em;
+	text-align: center;
+
+	background-image: linear-gradient(bottom, #86C255 25%, #78BB44 100%);
+	background-image: -o-linear-gradient(bottom, #86C255 25%, #78BB44 100%);
+	background-image: -moz-linear-gradient(bottom, #86C255 25%, #78BB44 100%);
+	background-image: -webkit-linear-gradient(bottom, #86C255 25%, #78BB44 100%);
+	background-image: -ms-linear-gradient(bottom, #86C255 25%, #78BB44 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.25, #86C255),
+		color-stop(1, #78BB44)
+	);
+}
+.gametitle {
+	background-color: #7B4;
+	float: left;
+	width: 885px;
+	height: 55px;
+	line-height: 2.9em;
+	margin-left: 2px;
+	padding-left: 5px;
+
+	background-image: linear-gradient(bottom, #86C255 25%, #78BB44 100%);
+	background-image: -o-linear-gradient(bottom, #86C255 25%, #78BB44 100%);
+	background-image: -moz-linear-gradient(bottom, #86C255 25%, #78BB44 100%);
+	background-image: -webkit-linear-gradient(bottom, #86C255 25%, #78BB44 100%);
+	background-image: -ms-linear-gradient(bottom, #86C255 25%, #78BB44 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.25, #86C255),
+		color-stop(1, #78BB44)
+	);
+}
+.gameactions {
+	color: #FFF;	
+	float: right;
+	position: relative;	
+	height: 55px;
+	z-index: 100;
+}
+.gameactions a { 
+	background-color: transparent;
+	color: #FFF; 
+	position: relative; 
+	z-index: 100; 
+	display: inline-block;
+	width: 60px;	
+	height: 55px;
+	padding: 0 10px 0 10px;
+	text-align: center;
+}
+.gameactions a:hover {
+	background-color: #111;
+}
+.gameactions-bg {
+	background-color: #222;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 55px;
+	z-index: 99;
+
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+}
+
+/**---------------------------------------------------------------------- *
+ * Button Styles.
+ *----------------------------------------------------------------------- */
+a.button {
+	background-color: #7B4;
+	font-size: 14px;
+	color: #FFF;
+	display: inline-block;
+	padding: 8px;	
+}
+a.button:hover {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+}
+
+/**---------------------------------------------------------------------- *
+ * Form Styles.
+ *----------------------------------------------------------------------- */
+/** Our Fancy SearchBox Styles **/
+.searcharea {
+	position: relative;
+	top: 5px;
+	float: right;
+}
+.usermenu input {
+	font-size: 12px;
+	color: #888;	
+	width: 190px;
+	height: 33px;
+	border: none; /*1px solid #ADADAD;*/
+	text-indent: 8px;
+	outline: none;
+}
+/** End our SearchBox Styles **/
+
+input#gametitle {
+}
+
+/**---------------------------------------------------------------------- *
+ * Simple Grid System Styles 1200/12 = 100 * span - 30 Inspired by Bootstrap!
+ *----------------------------------------------------------------------- */
+.container { 
+	background-color: #FFF;
+	display: block;
+	position: relative;
+	width: 960px; 
+	height: 100%;
+	padding-top: 25px;
+	margin-left: auto; margin-right: auto; text-align: left; 
+	clear: both;
+}
+.container.footer-wrapper {
+	font-size: 14px;
+	padding-top: 20px;
+}
+.row { 
+	clear: both; 
+	width: 100%; 
+	
+	margin-top: 10px;
+	margin-bottom: 20px;
+	
+	display: table;
+}
+.col {
+	text-align: left;
+	
+	width: 50px; 
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	margin-left: 5px;
+	/*padding-left: 10px;
+	padding-right: 10px;*/
+	float: left;
+
+	position: relative;
+	z-index: 100;
+}
+.col.span3 {
+	width: 230px;
+}
+.col.span4 {
+	width: 310px;
+}
+.col.span6 {
+	width: 470px;
+}
+.col.span8 {
+	width: 630px;
+}
+.col.span9 {
+	width: 710px;
+}
+.col.span12 {
+	width: 950px;
+}
+
+/**---------------------------------------------------------------------- *
+ * Added after submission..., I checked this out on my phone
+ * and felt it was necessary to make this site responsive!
+ * 01/04/2013.
+ *----------------------------------------------------------------------- */
+
+/* Phone Styles */
+@media (max-width: 620px) {
+	/* The main container style for rendering the page. */
+	.container {
+		width: 320px !important;
+		padding-top: 0px;
+	}
+	
+	/* Update the header. */
+	.header { 
+		width: 320px;
+		font-size: 34px; 
+	}
+	.header h1.left {
+		float: none;
+	}
+	.usermenu {
+		float: none;
+	}
+	.gametitle {
+		overflow: hidden;
+	}
+	.gameactions {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	/* The user navigation menu */
+	#navmenu {
+		margin-top: 5px;
+		font-size: 14px;
+	}
+
+	/* The game title... the number of votes doesn't need to be modified. */
+	.gametitle {
+		width: 248px;
+	}
+	
+	/* Update the grid styles. */
+	.col.span2 {
+		width: 300px;
+	}
+	.col.span3 {
+		width: 300px;
+	}
+	.col.span4 {
+		width: 300px;
+	}
+	.col.span12 {
+		width: 310px;
+	}
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 620px) and (max-width: 939px) {	
+	/* The main container style for rendering the page. */
+	.container {
+		width: 620px;
+		padding-top: 0px;
+	}
+	
+	/* Update the header. */
+	.header { 
+		width: 620px;
+		font-size: 44px; 
+	}
+
+	/* The user navigation menu */
+	#navmenu {
+		margin-top: 5px;
+	}
+
+	/* The game title... the number of votes doesn't need to be modified. */
+	.gametitle {
+		width: 548px;
+		overflow: hidden;
+	}
+	.gameactions {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	
+	/* Update the grid styles. */
+	.col.span2 {
+		width: 300px;
+	}
+	.col.span3 {
+		width: 300px;
+	}
+	.col.span4 {
+		width: 600px;
+	}
+	.col.span12 {
+		width: 610px;
+	}
+	.col.hidden-tablet {
+		display: none;
+	}
+	.col.extra-padding {
+		display: none;
+	}
+}
